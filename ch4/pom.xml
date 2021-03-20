@@ -70,8 +70,6 @@
               </execution>
             </executions>
             <configuration>
-              <!-- TODO: remove this once Open Liberty 21.0.0.3 is available -->
-              <installDirectory>/Users/andymc/dev/libertyGit/open-liberty/dev/build.image/wlp</installDirectory>
               <include>runnable</include>
               <serverName>${final.name}</serverName>
               <bootstrapProperties>
