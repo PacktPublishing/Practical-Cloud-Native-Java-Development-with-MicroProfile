@@ -37,7 +37,7 @@ public class Person {
         this.lastName = lastName;
     }
 
-    @JsonbProperty("favouriteColor")
+    @JsonbProperty("favouriteColour")
     public String getFavoriteColor() {
         return favoriteColor;
     }
