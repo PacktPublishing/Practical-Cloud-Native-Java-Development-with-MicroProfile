@@ -12,7 +12,7 @@
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>11</maven.compiler.source>
     <openliberty.version>[19.0.0.9,)</openliberty.version>
-    <final.name>book</final.name>
+    <final.name>ch6</final.name>
   </properties>
   <dependencies>
     <dependency>

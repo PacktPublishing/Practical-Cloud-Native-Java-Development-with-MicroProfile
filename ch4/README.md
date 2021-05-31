@@ -22,7 +22,7 @@ run this command may take a little while, but once Open Liberty has been downloa
 starts will be much faster.
 
 This command will run the server in the foreground. Once you see the magic message, 
-`CWWKF0011I: The book server is ready to run a smarter planet.`, you are ready to test the application. By default, the
+`CWWKF0011I: The ch4 server is ready to run a smarter planet.`, you are ready to test the application. By default, the
 server will listen on port 9080, so if you are attempting the "Hello World" sample from the first section you could
 invoke the service with the URL, "http://localhost:9080/rest/hello" - you can put this directly in a web browser or
 invoke it from the command line with a tool like [curl](https://curl.se/).
