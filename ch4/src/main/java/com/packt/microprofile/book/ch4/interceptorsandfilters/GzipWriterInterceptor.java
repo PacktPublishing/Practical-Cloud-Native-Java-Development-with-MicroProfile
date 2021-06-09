@@ -9,7 +9,9 @@ import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.WriterInterceptor;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
-//@Provider
+//@Provider // this is commented out to allow the other samples to run without returning
+            // Gzipped responses. To test this sample, please uncomment the @Provider
+            // annotation and recompile.
 public class GzipWriterInterceptor implements WriterInterceptor {
 
     @Override

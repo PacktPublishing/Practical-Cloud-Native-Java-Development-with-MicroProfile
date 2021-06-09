@@ -16,7 +16,9 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
 
 @PreMatching
-//@Provider
+//@Provider // this is commented out to allow the other samples to run without needing an
+            // API Key. To test this sample, please uncomment the @Provider annotation
+            // and recompile.
 public class ApiKeyCheckFilter implements ContainerRequestFilter {
     private static final String API_KEY_HEADER = "X-API-KEY";
     private static final int MAX_REQUESTS_PER_INTERVAL = 10;

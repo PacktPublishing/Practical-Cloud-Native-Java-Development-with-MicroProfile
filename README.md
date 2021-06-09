@@ -1,5 +1,6 @@
-# Practical-Cloud-Native-Development-with-MicroProfile-4.0
-Practical Cloud Native Development with MicroProfile 4.0, published by Packt
+# Practical Cloud Native Development with MicroProfile-4.0
+Practical Cloud Native Development with MicroProfile 4.0, published by
+[Packt](https://www.packtpub.com/)
 
 This repo is a supplement to the book, _Practical Cloud Native Development with
 MicroProfile 4.0_ by John Alcorn, David Chan, Emily Jiang, Andy McCright and
@@ -26,5 +27,5 @@ All of the examples in this repository use open source software such as
 applications, please refer to the README file under each chapter.
 
 If you have not already, consider purchasing a copy of _Practical Cloud Native
-Development with MicroProfile 4.0_ from Packt Publishing or your favorite book
-retailer.
+Development with MicroProfile 4.0_ from
+[Packt Publishing](https://www.packtpub.com/) or your favorite book retailer.

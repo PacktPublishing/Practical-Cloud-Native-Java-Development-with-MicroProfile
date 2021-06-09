@@ -9,7 +9,9 @@ import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
-//@Provider
+//@Provider // this is commented out to allow the other samples to run without removing
+            // whitespace. To test this sample, please uncomment the @Provider annotation
+            // and recompile.
 public class WhiteSpaceRemovingReaderInterceptor implements ReaderInterceptor {
 
     @Override
