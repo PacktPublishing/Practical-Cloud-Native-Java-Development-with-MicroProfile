@@ -54,7 +54,7 @@ public class TypeSafeClientIT {
     public void testAllProfiles() throws Exception {
         //System.out.println("classpath: " + System.getProperty("java.class.path"));
         ProfileApi api = TypesafeGraphQLClientBuilder.newBuilder()
-                                                     .endpoint("http://localhost:9079/graphql")
+                                                     .endpoint("http://localhost:9080/graphql")
                                                      .build(ProfileApi.class);
         List<OwnerProfile> allProfiles = api.allProfiles();
         assertNotNull(allProfiles);
