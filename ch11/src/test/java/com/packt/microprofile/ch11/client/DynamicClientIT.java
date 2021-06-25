@@ -43,18 +43,18 @@ public class DynamicClientIT {
 
     @Test
     public void testAllProfilesWithStringDocument() throws Exception {
-        verifyAllProfile(() -> executeSync(new RequestImpl("query allProfiles {"
-                                                          +"  allProfiles {"
-                                                          +"     ownerId, emailAddress"
-                                                          +"  }"
-                                                          +"}")));
+        verify(() -> executeSync(new RequestImpl("query allProfiles {"
+                                                +"  allProfiles {"
+                                                +"     ownerId, emailAddress"
+                                                +"  }"
+                                                +"}")));
     }
 
     @Test
     public void testAllProfilesWithConstructedDocument() throws Exception {
         Field query = field("allProfiles");
         query.setFields(Arrays.asList(field("ownerId"), field("emailAddress")));
-        verifyAllProfile(() -> executeSync(document(operation(OperationType.QUERY, "allProfiles", query))));
+        verify(() -> executeSync(document(operation(OperationType.QUERY, "allProfiles", query))));
     }
 
     private DynamicGraphQLClient newClient() {
@@ -75,7 +75,7 @@ public class DynamicClientIT {
         }
     }
 
-    private void verifyAllProfile(Supplier<Response> responseSupplier) throws Exception {
+    private void verify(Supplier<Response> responseSupplier) throws Exception {
         Response resp = responseSupplier.get();
         JsonObject data = resp.getData();
         assertNotNull(data);
