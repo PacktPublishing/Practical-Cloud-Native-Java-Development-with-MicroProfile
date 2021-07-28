@@ -7,6 +7,7 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Liveness;
 import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.health.Startup;
 
 @ApplicationScoped
 public class CDIMethodProducerChecks {
@@ -23,11 +24,27 @@ public class CDIMethodProducerChecks {
         return () -> HealthCheckResponse.named("cdiCpuUsage").status(getCpuUsage() < 0.9).build();
     }
 
-    public Double getMemUsage() {
+    @Produces
+    @Startup
+    HealthCheck startupCDIMethodProducer() {
+        return () -> HealthCheckResponse.named("cdiStartupStatus").status(getStatus()).build();
+    }
+    
+    private Double getMemUsage() {
         return Utility.getMemUsage();
     }
 
-    public Double getCpuUsage() {
+    private Double getCpuUsage() {
         return Utility.getCpuUsage();
+    }
+    
+    /*
+     * Mock method
+     * 
+     * For the purpose of the code sample
+     * we will just return true.
+     */
+    private boolean getStatus() {
+        return true;
     }
 }

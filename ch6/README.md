@@ -28,6 +28,10 @@ server will listen on port 9080, so if you are attempting view the Health and Me
 http://localhost:9080/health and http://localhost:9080/metrics respectively - you can put this directly in a web browser 
 or invoke it from the command line with a tool like [curl](https://curl.se/). 
 
+The application deployed which contains the health, metrics and tracing instrumented code is given the context root `chapter6`.
+For example, to send a request to the GET endpoint of the [MetricsResource](https://github.com/PacktPublishing/Practical-Cloud-Native-Development-with-MicroProfile-4.0/blob/3423bc35a1942e99c928a7f4b660f16ef9201a76/ch6/src/main/java/com/packt/microprofile/book/ch6/metrics/MetricsResource.java) (which is given the path `/metricsResource`) you 
+will send a request to `http://localhost:9080/chapter6/metricsResource`.
+
 To stop the server in the current terminal window, press `Ctrl-C`.
 
 ## Note on Jaeger
