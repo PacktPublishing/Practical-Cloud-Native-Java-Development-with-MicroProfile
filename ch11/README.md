@@ -26,6 +26,6 @@ This command will run the server in the foreground. Once you see the magic messa
 `CWWKF0011I: The ch11 server is ready to run a smarter planet.`, you are ready to test the application. While in dev
 mode, you can run the SmallRye GraphQL Client integration tests simply by pressing `Enter` from the command line. To
 view the application's schema or run your own queries and mutations from the GraphiQL web client, you will need to
-browse to the application's index page at http://localhost:9080/index.html.
+browse to the application's index page at http://localhost:9080/ch11/index.html.
 
 To stop the server in the current terminal window, press `Ctrl-C`.
