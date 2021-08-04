@@ -29,10 +29,12 @@ import org.eclipse.microprofile.graphql.NonNull;
 /** JSON-B POJO class representing a Stock JSON object */
 public class Stock {
 
+    private static Double DEFAULT_COMMISSION = 0.05;
+
     @NonNull
     private String symbol;
     private int shares;
-    private double commission;
+    private Double commission = 0.05;
     @Name("pricePerShare")
     private double price;
 
@@ -74,12 +76,11 @@ public class Stock {
         updateDate();
     }
 
-    @Ignore
     public double getCommission() {
-        return commission;
+        return commission == null ? DEFAULT_COMMISSION : commission;
     }
 
-    public void setCommission(double newCommission) {
+    public void setCommission(Double newCommission) {
         commission = newCommission;
         updateDate();
     }
