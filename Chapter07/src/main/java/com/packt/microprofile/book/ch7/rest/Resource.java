@@ -1,4 +1,4 @@
-package com.demo.rest;
+package com.packt.microprofile.book.ch7.rest;
 
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;

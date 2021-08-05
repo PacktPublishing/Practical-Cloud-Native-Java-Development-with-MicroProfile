@@ -1,4 +1,4 @@
-package com.demo;
+package com.packt.microprofile.book.ch7;
 
 import org.eclipse.microprofile.config.spi.ConfigSource;
 
