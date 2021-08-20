@@ -11,12 +11,12 @@ In this cloud-native era, most applications are deployed in a cloud environment 
 
 This book covers the following exciting features:
 - Understand best practices for applying the 12-Factor methodology while building cloud-native applications.
-- Create client-server architecture using MicroProfile Rest Client and JAX-RS
-- Configure your cloud-native application using MicroProfile Config
-- Secure your cloud-native application with MicroProfile JWT
-- Become well-versed with running your cloud-native applications in Open Liberty
-- Grasp MicroProfile Open Tracing and learn how to use Jaeger to view trace spans
-- Deploy Docker containers to Kubernetes and understand how to use ConfigMap and Secrets from Kubernetes
+- Create client-server architecture using MicroProfile Rest Client and JAX-RS.
+- Configure your cloud-native application using MicroProfile Config.
+- Secure your cloud-native application with MicroProfile JWT.
+- Become well-versed with running your cloud-native applications in Open Liberty.
+- Grasp MicroProfile Open Tracing and learn how to use Jaeger to view trace spans.
+- Deploy Docker containers to Kubernetes and understand how to use ConfigMap and Secrets from Kubernetes.
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1801078807) today!
 
