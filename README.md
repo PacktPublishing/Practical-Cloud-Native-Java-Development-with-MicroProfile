@@ -61,7 +61,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 **Emily Jiang**
 is a Java Champion, a cloud-native architect with practical experience of building cloud-native applications. She is a MicroProfile guru, leading a number of MicroProfile specifications as well as the implementations in Open Liberty. She is a well-known international conference speaker.
 
-**Andy McCright**
+**Andrew McCright**
 is IBM's Web Services Architect with 20 years of experience building Enterprise Java runtimes. He leads the MicroProfile Rest Client & GraphQL projects and contributes to Open Liberty, Jakarta REST, CXF, RESTEasy, and more. He is also a blogger
 
 **John Alcorn**
