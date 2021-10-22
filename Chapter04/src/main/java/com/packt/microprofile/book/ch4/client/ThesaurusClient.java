@@ -19,7 +19,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @Path("/thesaurus/{word}")
 @RegisterProvider(NoSuchWordResponseMapper.class)
-@RegisterRestClient(baseUri = "http://localhost:9080/rest")
+@RegisterRestClient(baseUri = "http://localhost:8080/rest")
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 public interface ThesaurusClient {

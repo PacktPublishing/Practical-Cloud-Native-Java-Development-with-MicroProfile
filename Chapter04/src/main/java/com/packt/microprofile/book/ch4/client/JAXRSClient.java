@@ -25,7 +25,7 @@ public class JAXRSClient {
     @GET
     @Path("/{word}")
     public String synonymsFor(@PathParam("word") String word) throws NoSuchWordException {
-        String uri = "http://localhost:9080/rest/thesaurus";
+        String uri = "http://localhost:8080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
         WebTarget target = client.target(uri).path(word);
         Builder builder = target.request(MediaType.TEXT_PLAIN);
@@ -48,7 +48,7 @@ public class JAXRSClient {
     @Path("/async/future/{word}")
     public String synonymsForAsyncFuture(@PathParam("word") String word)
             throws NoSuchWordException, InterruptedException, ExecutionException {
-        String uri = "http://localhost:9080/rest/thesaurus";
+        String uri = "http://localhost:8080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
         WebTarget target = client.target(uri).path(word);
         Builder builder = target.request(MediaType.TEXT_PLAIN);
@@ -77,7 +77,7 @@ public class JAXRSClient {
         String[] wordsArr = words.split(",");
 
         CountDownLatch latch = new CountDownLatch(wordsArr.length);
-        String uri = "http://localhost:9080/rest/thesaurus";
+        String uri = "http://localhost:8080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
         for (String word : wordsArr) {
             WebTarget target = client.target(uri).path(word);

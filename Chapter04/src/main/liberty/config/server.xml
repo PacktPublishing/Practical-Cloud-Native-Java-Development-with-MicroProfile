@@ -9,7 +9,7 @@
     
 
     <httpEndpoint id="defaultHttpEndpoint"
-                  httpPort="9080"
+                  httpPort="8080"
                   httpsPort="9443"/>
 
     <webApplication location="${project.name}.war">
