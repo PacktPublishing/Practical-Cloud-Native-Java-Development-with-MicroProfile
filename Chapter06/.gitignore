@@ -25,3 +25,4 @@ hs_err_pid*
 .project
 .settings/*
 /target/
+/ch6.iml
