@@ -22,12 +22,13 @@ import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
 @Path("/client/jaxrs")
 public class JAXRSClient {
 
+    private final static String BASE_URI = "http://localhost:9080/ch4/rest/thesaurus";
+
     @GET
     @Path("/{word}")
     public String synonymsFor(@PathParam("word") String word) throws NoSuchWordException {
-        String uri = "http://localhost:9080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
-        WebTarget target = client.target(uri).path(word);
+        WebTarget target = client.target(BASE_URI).path(word);
         Builder builder = target.request(MediaType.TEXT_PLAIN);
         try (Response response = builder.get()) {
             int status = response.getStatus();
@@ -48,9 +49,8 @@ public class JAXRSClient {
     @Path("/async/future/{word}")
     public String synonymsForAsyncFuture(@PathParam("word") String word)
             throws NoSuchWordException, InterruptedException, ExecutionException {
-        String uri = "http://localhost:9080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
-        WebTarget target = client.target(uri).path(word);
+        WebTarget target = client.target(BASE_URI).path(word);
         Builder builder = target.request(MediaType.TEXT_PLAIN);
         AsyncInvoker invoker = builder.async();
         Future<Response> future = invoker.get();
@@ -77,10 +77,9 @@ public class JAXRSClient {
         String[] wordsArr = words.split(",");
 
         CountDownLatch latch = new CountDownLatch(wordsArr.length);
-        String uri = "http://localhost:9080/rest/thesaurus";
         Client client = ClientBuilder.newBuilder().build();
         for (String word : wordsArr) {
-            WebTarget target = client.target(uri).path(word);
+            WebTarget target = client.target(BASE_URI).path(word);
             Builder builder = target.request(MediaType.TEXT_PLAIN);
             AsyncInvoker invoker = builder.async();
             invoker.get(new InvocationCallback<String>() {

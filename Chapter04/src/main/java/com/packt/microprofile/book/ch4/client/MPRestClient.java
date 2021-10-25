@@ -21,10 +21,12 @@ import org.eclipse.microprofile.rest.client.RestClientBuilder;
 @Path("/client/mp")
 public class MPRestClient {
 
+    private final static URI BASE_URI = URI.create("http://localhost:9080/ch4/rest/thesaurus");
+
     @GET
     @Path("{word}")
     public String synonymsFor(@PathParam("word") String word) throws NoSuchWordException {
-        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(URI.create("http://localhost:9080/rest"))
+        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(BASE_URI)
                 // .register(NoSuchWordResponseMapper.class)
                 .build(ThesaurusClient.class);
         try {
@@ -46,7 +48,7 @@ public class MPRestClient {
 
             CountDownLatch latch = new CountDownLatch(wordsArr.length);
             ThesaurusAsyncClient thesaurus = RestClientBuilder.newBuilder()
-                    .baseUri(URI.create("http://localhost:9080/rest"))
+                    .baseUri(BASE_URI)
                     .register(NoSuchWordResponseMapper.class)
                     .build(ThesaurusAsyncClient.class);
             Arrays.stream(wordsArr).parallel()
@@ -71,7 +73,7 @@ public class MPRestClient {
 
     @PostConstruct
     public void initThesaurus() {
-        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(URI.create("http://localhost:9080/rest"))
+        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(BASE_URI)
                 // .register(NoSuchWordResponseMapper.class)
                 .build(ThesaurusClient.class);
         try {
@@ -83,6 +85,5 @@ public class MPRestClient {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 }
