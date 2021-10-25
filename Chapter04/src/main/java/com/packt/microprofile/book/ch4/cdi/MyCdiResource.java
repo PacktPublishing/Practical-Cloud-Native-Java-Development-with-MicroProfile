@@ -1,5 +1,9 @@
 package com.packt.microprofile.book.ch4.cdi;
 
+import com.packt.microprofile.book.ch4.client.ThesaurusClient;
+import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -7,16 +11,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.packt.microprofile.book.ch4.client.ThesaurusClient;
-import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
-
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 @ApplicationScoped
 @Path("/cdi")
 @Produces("text/plain")
 public class MyCdiResource {
-
     @Inject
     @Minimal
     MyDependency dependency;

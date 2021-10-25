@@ -1,64 +1,51 @@
 package com.packt.microprofile.book.ch4.thesaurus;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.packt.microprofile.book.ch4.client.ThesaurusClient;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.util.*;
 
-@Path ("/thesaurus/{word}")
-@Consumes(MediaType.TEXT_PLAIN)
-@Produces(MediaType.TEXT_PLAIN)
-public class ThesaurusResource {
+@RestClient
+public class ThesaurusResource implements ThesaurusClient {
     static Map<String, List<String>> map = new HashMap<>();
 
     @PathParam("word")
     String word;
 
-    @GET
-    public String get() throws NoSuchWordException {
+    @Override
+    public String getSynonymsFor(String word) throws NoSuchWordException {
         List<String> synonyms = map.get(word);
         if (synonyms == null)
             throw new NoSuchWordException(word);
         return String.join(",", synonyms);
     }
 
-    @POST
-    public String post(String synonyms) throws WordAlreadyExistsException {
+    @Override
+    public String setSynonymsFor(String word, String synonyms) throws WordAlreadyExistsException {
         List<String> synonymList = new ArrayList<>(Arrays.asList(synonyms.split(",")));
         if (null != map.putIfAbsent(word, synonymList))
             throw new WordAlreadyExistsException(word);
         return String.join(",", synonyms);
     }
 
-    @PUT
-    public String put(String synonyms) throws NoSuchWordException {
+    @Override
+    public String updateSynonymsFor(String word, String synonyms) throws NoSuchWordException {
         List<String> synonymList = Arrays.asList(synonyms.split(","));
         if (null == map.replace(word, synonymList))
             throw new NoSuchWordException(word);
         return String.join(",", synonyms);
     }
 
-    @DELETE
-    public boolean delete() throws NoSuchWordException {
+    @Override
+    public boolean deleteSynonyms(String word) throws NoSuchWordException {
         if (null == map.remove(word))
             throw new NoSuchWordException(word);
         return true;
     }
 
-    @PATCH
-    public String patch(String newSynonyms) throws NoSuchWordException {
+    @Override
+    public String addNewSynonymsFor(String word, String newSynonyms) throws NoSuchWordException {
         List<String> synonyms = map.get(word);
         if (synonyms == null)
             throw new NoSuchWordException(word);

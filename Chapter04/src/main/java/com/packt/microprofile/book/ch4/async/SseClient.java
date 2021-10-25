@@ -8,9 +8,9 @@ import javax.ws.rs.core.MediaType;
 import org.reactivestreams.Publisher;
 
 @Path("/sse")
-@Produces(MediaType.SERVER_SENT_EVENTS)
 public interface SseClient {
 
     @GET
+    @Produces(MediaType.SERVER_SENT_EVENTS)
     Publisher<String> receiveSSEs();
 }

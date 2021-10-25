@@ -45,10 +45,12 @@ public class MPRestClient {
             String[] wordsArr = words.split(",");
 
             CountDownLatch latch = new CountDownLatch(wordsArr.length);
+
             ThesaurusAsyncClient thesaurus = RestClientBuilder.newBuilder()
                     .baseUri(URI.create("http://localhost:8080/rest"))
-                    .register(NoSuchWordResponseMapper.class)
+                    // .register(NoSuchWordResponseMapper.class)
                     .build(ThesaurusAsyncClient.class);
+
             Arrays.stream(wordsArr).parallel()
                                    .map(thesaurus::getSynonymsFor)
                                    .forEach(cs -> {

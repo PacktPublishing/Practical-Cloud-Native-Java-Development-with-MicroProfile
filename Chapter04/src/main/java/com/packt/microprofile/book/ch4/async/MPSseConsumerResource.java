@@ -13,11 +13,11 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 @Path("/test")
-@Produces("text/plain")
 public class MPSseConsumerResource {
 
     @GET
     @Path("/sse")
+    @Produces("text/plain")
     public CompletionStage<String> getCombinedSseString() {
         CompletableFuture<String> stage = new CompletableFuture<>();
         StringBuilder sb = new StringBuilder();
