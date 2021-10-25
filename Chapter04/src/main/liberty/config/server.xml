@@ -5,10 +5,14 @@
         <feature>mpRestClient-2.0</feature>
         <feature>jaxrs-2.1</feature>
         <feature>cdi-2.0</feature>
+<!--
+	<feature>mpReactiveStreams-1.0</feature>
+-->
     </featureManager>
     
 
     <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
                   httpPort="8080"
                   httpsPort="9443"/>
 

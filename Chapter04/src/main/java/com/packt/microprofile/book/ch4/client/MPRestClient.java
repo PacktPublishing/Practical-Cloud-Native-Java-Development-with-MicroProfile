@@ -71,7 +71,8 @@ public class MPRestClient {
 
     @PostConstruct
     public void initThesaurus() {
-        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(URI.create("http://localhost:8080/rest"))
+        String resourceUrl = "http://localhost:8080/rest";
+        ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(URI.create(resourceUrl))
                 // .register(NoSuchWordResponseMapper.class)
                 .build(ThesaurusClient.class);
         try {
