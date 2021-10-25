@@ -2,8 +2,8 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>net.fschulte.testbed.mp</groupId>
-  <artifactId>timesheetiocsv2tiki-wildfly-service-a</artifactId>
+  <groupId>com.packt.microprofile</groupId>
+  <artifactId>ch4</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
@@ -11,7 +11,7 @@
     <version.wildfly>25.0.0.Final</version.wildfly>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>11</maven.compiler.source>
-    <final.name>timesheetiocsv2tiki-wildfly</final.name>
+    <final.name>ch4</final.name>
   </properties>
   <dependencies>
     <dependency>
@@ -34,7 +34,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>timesheetiocsv2tiki-wildfly</finalName>
+    <finalName>ch4-wildfly</finalName>
   </build>
   <profiles>
     <profile>
