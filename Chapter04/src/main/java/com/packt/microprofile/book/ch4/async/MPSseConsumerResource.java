@@ -22,7 +22,7 @@ public class MPSseConsumerResource {
         CompletableFuture<String> stage = new CompletableFuture<>();
         StringBuilder sb = new StringBuilder();
         SseClient client = RestClientBuilder.newBuilder()
-                                            .baseUri(URI.create("http://localhost:9080/rest"))
+                                            .baseUri(URI.create("http://localhost:9080/ch4/rest"))
                                             .build(SseClient.class);
         client.receiveSSEs().subscribe(new Subscriber<String>() {
 

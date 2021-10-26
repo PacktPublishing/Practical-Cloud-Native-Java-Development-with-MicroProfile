@@ -17,9 +17,9 @@ import com.packt.microprofile.book.ch4.thesaurus.WordAlreadyExistsException;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@Path("/thesaurus/{word}")
+@Path("/{word}")
 @RegisterProvider(NoSuchWordResponseMapper.class)
-@RegisterRestClient(baseUri = "http://localhost:9080/rest")
+@RegisterRestClient(baseUri = "http://localhost:9080/ch4/rest/thesaurus")
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 public interface ThesaurusClient {
