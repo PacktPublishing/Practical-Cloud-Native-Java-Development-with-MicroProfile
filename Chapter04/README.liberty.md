@@ -1,6 +1,6 @@
 # README.liberty.md
 
-## Build and excute
+## Build and execute
 ```
 mvn -f pom.xml.liberty clean package liberty:run
 ```
