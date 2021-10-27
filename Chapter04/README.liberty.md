@@ -442,7 +442,7 @@ http://localhost:9080/ch4/rest/client/mp/funnyXX
 result: funnyXX
 ```
 
-##### ASYNC - ThesaurusClient - /client/mp/thesaurus/{word}
+##### ASYNC - ThesaurusAsyncClient - /client/mp/async/{word}
 
 *Client:*
 
