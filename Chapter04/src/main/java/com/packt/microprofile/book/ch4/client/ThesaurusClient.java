@@ -3,12 +3,14 @@ package com.packt.microprofile.book.ch4.client;
 import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
 import com.packt.microprofile.book.ch4.thesaurus.WordAlreadyExistsException;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+@Path("/{word}")
 @RegisterProvider(NoSuchWordResponseMapper.class)
-@Path("/thesaurus/{word}")
+@RegisterRestClient(baseUri = "http://localhost:9080/ch4/rest/thesaurus")
 public interface ThesaurusClient {
     @GET
     @Consumes(MediaType.TEXT_PLAIN)

@@ -1,13 +1,17 @@
 package com.packt.microprofile.book.ch4.client;
 
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.CompletionStage;
 
+// info: This interface implements same methods as ThesaurusClient but without the exception declarations on the signature.
+//       By this it can be used in by the rest client.
+
+@Path("/{word}")
 @RegisterProvider(NoSuchWordResponseMapper.class)
-@Path("/thesaurus/async/{word}")
 public interface ThesaurusAsyncClient {
     @GET
     @Consumes(MediaType.TEXT_PLAIN)
