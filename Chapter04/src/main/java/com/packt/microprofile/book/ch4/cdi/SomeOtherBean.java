@@ -8,6 +8,10 @@ public class SomeOtherBean {
 
     @Produces
     public MyProducedDependency produceDependency() {
-        return new MyProducedDependency((int) (Math.random() * 10));
+        int intRandom = (int) (Math.random() * 10);
+
+        System.out.println("com.packt.microprofile.book.ch4.cdi.SomeOtherBean.produceDependency() [return new MyProducedDependency(intRandom=" + intRandom + ");]");
+
+        return new MyProducedDependency(intRandom);
     }
 }

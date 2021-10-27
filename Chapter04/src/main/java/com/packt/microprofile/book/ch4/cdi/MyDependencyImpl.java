@@ -11,6 +11,8 @@ public class MyDependencyImpl implements MyDependency {
 
     @Override
     public int getInstanceId() {
+        System.out.println("com.packt.microprofile.book.ch4.cdi.MyDependencyImpl.getInstanceId() [return instanceId=" + instanceId + "=]");
+
         return instanceId;
     }
 }
