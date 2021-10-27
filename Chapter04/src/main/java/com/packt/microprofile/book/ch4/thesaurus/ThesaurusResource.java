@@ -27,7 +27,7 @@ public class ThesaurusResource {
     String word;
 
     @GET
-    public synchronized String get() throws NoSuchWordException {
+    public String get() throws NoSuchWordException {
         List<String> synonyms = map.get(word);
 
         String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms + "=]";
@@ -46,7 +46,7 @@ public class ThesaurusResource {
     }
 
     @POST
-    public synchronized String post(String synonyms) throws WordAlreadyExistsException {
+    public String post(String synonyms) throws WordAlreadyExistsException {
         List<String> synonymList = new ArrayList<>(Arrays.asList(synonyms.split(",")));
 
         String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms  + "=, synonymList=" + synonymList + "=]";
@@ -65,7 +65,7 @@ public class ThesaurusResource {
     }
 
     @PUT
-    public synchronized String put(String synonyms) throws NoSuchWordException {
+    public String put(String synonyms) throws NoSuchWordException {
         List<String> synonymList = Arrays.asList(synonyms.split(","));
 
         String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms  + "=, synonymList=" + synonymList + "=]";
@@ -84,7 +84,7 @@ public class ThesaurusResource {
     }
 
     @DELETE
-    public synchronized boolean delete() throws NoSuchWordException {
+    public boolean delete() throws NoSuchWordException {
         String result = "[map=" + map + "=, word=" + word  + "=]";
 
         if (null == map.remove(word)) {
@@ -101,7 +101,7 @@ public class ThesaurusResource {
     }
 
     @PATCH
-    public synchronized String patch(String newSynonyms) throws NoSuchWordException {
+    public String patch(String newSynonyms) throws NoSuchWordException {
         List<String> synonyms = map.get(word);
 
         String result = "[map=" + map + "=, word=" + word  + "=, newSynonyms=" + newSynonyms  + "=, synonyms=" + synonyms + "=]";
