@@ -9,7 +9,6 @@ import java.util.concurrent.CompletionStage;
 @RegisterProvider(NoSuchWordResponseMapper.class)
 @Path("/thesaurus/async/{word}")
 public interface ThesaurusAsyncClient {
-
     @GET
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)

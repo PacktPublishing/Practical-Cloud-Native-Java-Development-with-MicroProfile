@@ -10,8 +10,16 @@
     <maven.compiler.target>11</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>11</maven.compiler.source>
-    <payaraVersion>5.2021.8</payaraVersion>
-    <final.name>ch4-payara</final.name>
+    <!--
+      NOTE: Version 6.2021.1.Alpha1 used on LATEST got rid of most probllems. One remains that @RestClient CDI injection does not work.
+      NOTE: Version 5.2021.1 till 5.2021.8 had even more trouble to do anything with the code so it is no option.
+      NOTE: It seems possible that the misleading documentation about @RestClient annoation to identify the Resource to be injected need to be looked into.
+      NOTE: Other micoprofile runtimes like liberty, wildfly and quarkus are working fine with the unchanged code base.
+    
+     <payaraVersion>5.2021.1</payaraVersion>
+    -->
+    <payaraVersion>LATEST</payaraVersion>
+    <final.name>ch4</final.name>
   </properties>
   <dependencies>
     <dependency>
@@ -22,17 +30,16 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-auth-jwt</artifactId>
+      <version>3.9.5</version>
+    </dependency>
+    <dependency>
       <groupId>org.reactivestreams</groupId>
       <artifactId>reactive-streams</artifactId>
       <version>1.0.3</version>
+      <scope>provided</scope>
     </dependency>
-    <!--
-    <dependency>
-        <groupId>io.vertx</groupId>
-        <artifactId>vertx-auth-jwt</artifactId>
-        <version>4.1.5</version>
-    </dependency>
-    -->
   </dependencies>
   <build>
     <finalName>ch4</finalName>
@@ -58,17 +65,7 @@
               </execution>
             </executions>
             <configuration>
-            <!--
               <payaraVersion>${payaraVersion}</payaraVersion>
-            -->
-              <deployArtifacts>
-                  <artifactItem>
-                      <groupId>com.packt.microprofile</groupId>
-                      <artifactId>ch4</artifactId>
-                      <version>1.0-SNAPSHOT</version>
-                      <type>war</type>
-                  </artifactItem>
-              </deployArtifacts>
             </configuration>
           </plugin>
         </plugins>

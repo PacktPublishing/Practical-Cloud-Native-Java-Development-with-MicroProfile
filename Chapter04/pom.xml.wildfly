@@ -34,7 +34,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>ch4-wildfly</finalName>
+    <finalName>ch4</finalName>
   </build>
   <profiles>
     <profile>
@@ -57,6 +57,7 @@
             </executions>
             <configuration>
               <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</feature-pack-location>
+              <context-root>false</context-root>
               <layers>
                 <layer>jaxrs</layer>
                 <layer>microprofile-platform</layer>

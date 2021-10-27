@@ -21,7 +21,7 @@ public class OutBoundTraceResource {
          * Send a GET request to InboundTraceResource.
          * We'll not worry about the response.
          */
-        client.target("http://localhost:8080/inbound/tracing").request().get();
+        client.target("http://localhost:9080/inbound/tracing").request().get();
 
         return "Sent outbound request";
     }
