@@ -95,6 +95,5 @@ public class MPRestClient {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 }

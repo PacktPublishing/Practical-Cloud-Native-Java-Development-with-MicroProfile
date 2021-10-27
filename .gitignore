@@ -1,3 +1,5 @@
 .DS_Store
-.idea/.gitignore
 .idea/
+.vscode/*
+**/.project
+**/.classpath
