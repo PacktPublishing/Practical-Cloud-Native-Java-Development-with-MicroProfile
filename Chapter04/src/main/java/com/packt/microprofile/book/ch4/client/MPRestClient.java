@@ -26,6 +26,8 @@ public class MPRestClient {
     @GET
     @Path("{word}")
     public String synonymsFor(@PathParam("word") String word) throws NoSuchWordException {
+        System.out.println("CALL: com.packt.microprofile.book.ch4.client.MPRestClient.synonymsFor(word=" + word + "=)");
+
         ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(BASE_URI)
                 // .register(NoSuchWordResponseMapper.class)
                 .build(ThesaurusClient.class);
@@ -42,15 +44,21 @@ public class MPRestClient {
     @GET
     @Path("/async/{words}")
     public void synonymsForAsync(@Suspended AsyncResponse ar, @PathParam("words") String words) {
+        System.out.println("CALL: com.packt.microprofile.book.ch4.client.MPRestClient.synonymsForAsync(ar=<not show>, words=" + words + "=)");
+
         executor.submit(() -> {
             StringBuffer sb = new StringBuffer();
             String[] wordsArr = words.split(",");
 
             CountDownLatch latch = new CountDownLatch(wordsArr.length);
+
+            // info: This is accessing the ThesaurusClient endpoint but use a different interface with same 
+            //       methods only missing the exception declarations on the signature.
             ThesaurusAsyncClient thesaurus = RestClientBuilder.newBuilder()
                     .baseUri(BASE_URI)
-                    .register(NoSuchWordResponseMapper.class)
+                    // .register(NoSuchWordResponseMapper.class)
                     .build(ThesaurusAsyncClient.class);
+
             Arrays.stream(wordsArr).parallel()
                                    .map(thesaurus::getSynonymsFor)
                                    .forEach(cs -> {
@@ -73,6 +81,8 @@ public class MPRestClient {
 
     @PostConstruct
     public void initThesaurus() {
+        System.out.println("CALL: com.packt.microprofile.book.ch4.client.MPRestClient.initThesaurus()");
+
         ThesaurusClient thesaurus = RestClientBuilder.newBuilder().baseUri(BASE_URI)
                 // .register(NoSuchWordResponseMapper.class)
                 .build(ThesaurusClient.class);

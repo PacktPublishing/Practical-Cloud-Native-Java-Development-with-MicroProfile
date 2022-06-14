@@ -1,5 +1,9 @@
 package com.packt.microprofile.book.ch4.cdi;
 
+import com.packt.microprofile.book.ch4.client.ThesaurusClient;
+import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -7,16 +11,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.packt.microprofile.book.ch4.client.ThesaurusClient;
-import com.packt.microprofile.book.ch4.thesaurus.NoSuchWordException;
-
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 @ApplicationScoped
 @Path("/cdi")
 @Produces("text/plain")
 public class MyCdiResource {
-
     @Inject
     @Minimal
     MyDependency dependency;
@@ -26,15 +24,21 @@ public class MyCdiResource {
 
     @GET
     public int getDependencyInstanceId() {
-        System.out.println(dependency);
-        return dependency.getInstanceId();
+        int result = dependency.getInstanceId();
+
+        System.out.println("com.packt.microprofile.book.ch4.cdi.MyCdiResource.getDependencyInstanceId(): [dependency=" + dependency + "=] [result=" + result + "=]");
+
+        return result;
     }
 
     @GET
     @Path("/produced")
     public int getProducedDependencyRandomNum() {
-        System.out.println(producedDependency);
-        return producedDependency.getRandomNumber();
+        int result = producedDependency.getRandomNumber();
+
+        System.out.println("com.packt.microprofile.book.ch4.cdi.MyCdiResource.getProducedDependencyRandomNum(): [producedDependency=" + producedDependency + "=] [result=" + result + "=]");
+
+        return result;
     }
 
     @Inject
@@ -44,10 +48,16 @@ public class MyCdiResource {
     @GET
     @Path("/thesaurus/{word}")
     public String lookup(@PathParam("word") String word) {
+        String result = "Sorry, that word is not found.";
+
         try {
-            return thesaurusClient.getSynonymsFor(word);
+            result = thesaurusClient.getSynonymsFor(word);
         } catch (NoSuchWordException ex) {
-            return "Sorry, that word is not found.";
+            // ignore, take default response
         }
+
+        System.out.println("com.packt.microprofile.book.ch4.cdi.MyCdiResource.lookup(word=" + word + "=): [thesaurusClient=" + thesaurusClient + "=] [result=" + result + "=]");
+
+        return result;
     }
 }

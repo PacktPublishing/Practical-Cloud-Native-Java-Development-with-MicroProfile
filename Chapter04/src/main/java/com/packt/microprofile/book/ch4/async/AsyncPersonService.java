@@ -32,14 +32,14 @@ public class AsyncPersonService {
     }
 
     @GET
-    @Path("sync/{id}")
+    @Path("/sync/{id}")
     public Person getPersonFromDBSync(@PathParam("id") int id) throws InterruptedException, ExecutionException {
         Future<Person> someData = executor.submit(() -> getPerson(id));
         return someData.get();
     }
 
     @GET
-    @Path("async/{id}")
+    @Path("/async/{id}")
     public void getPersonFromDBAsync(@PathParam("id") int id, @Suspended AsyncResponse ar) {
         executor.submit(() -> {
             Optional<Person> p = Optional.ofNullable(getPerson(id));

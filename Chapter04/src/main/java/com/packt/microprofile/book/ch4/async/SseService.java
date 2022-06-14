@@ -14,10 +14,10 @@ import javax.ws.rs.sse.SseBroadcaster;
 import javax.ws.rs.sse.SseEventSink;
 
 @Path("/sse")
-@Produces(MediaType.SERVER_SENT_EVENTS)
 public class SseService {
 
     @GET
+    @Produces(MediaType.SERVER_SENT_EVENTS)
     public void send3TextEvents(@Context SseEventSink sink, @Context Sse sse) {
         Executors.newSingleThreadExecutor().submit(() -> {
             try (SseEventSink sinkToClose = sink) {
@@ -60,6 +60,7 @@ public class SseService {
 
     @GET
     @Path("/broadcast")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
     public void broadcast(@Context SseEventSink sink, @Context Sse sse) {
         startBroadcasting(sse);
         broadcaster.register(sink);
