@@ -1,7 +1,3 @@
-## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B17377?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
------
-For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
-
 # Practical Cloud-Native Java Development with MicroProfile
 
 <a href="https://www.packtpub.com/cloud-networking/practical-cloud-native-java-development-with-microprofile?utm_source=github&utm_medium=repository&utm_campaign=9781801078801"><img src="https://static.packt-cdn.com/products/9781801078801/cover/smaller" alt="Practical Cloud-Native Java Development with MicroProfile" height="256px" align="right"></a>
