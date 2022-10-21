@@ -71,3 +71,7 @@ is an application modernization architect in the Cloud Engagement Hub, specializ
 is a software developer at IBM who works on the observability and serviceability components of the Open Liberty project. He is involved with the MicroProfile project with a specialization in the MicroProfile Metrics component.
 
 ****
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781801078801">https://packt.link/free-ebook/9781801078801 </a> </p>
