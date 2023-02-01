@@ -13,16 +13,18 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 @Path("/test")
-@Produces("text/plain")
 public class MPSseConsumerResource {
+
+    private final static URI BASE_URI = URI.create("http://localhost:9080/ch4/rest");
 
     @GET
     @Path("/sse")
+    @Produces("text/plain")
     public CompletionStage<String> getCombinedSseString() {
         CompletableFuture<String> stage = new CompletableFuture<>();
         StringBuilder sb = new StringBuilder();
         SseClient client = RestClientBuilder.newBuilder()
-                                            .baseUri(URI.create("http://localhost:9080/ch4/rest"))
+                                            .baseUri(BASE_URI)
                                             .build(SseClient.class);
         client.receiveSSEs().subscribe(new Subscriber<String>() {
 

@@ -29,40 +29,95 @@ public class ThesaurusResource {
     @GET
     public String get() throws NoSuchWordException {
         List<String> synonyms = map.get(word);
-        if (synonyms == null)
+
+        String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms + "=]";
+
+        if (synonyms == null) {
+            Exception ee = new NoSuchWordException(word);
+            result += " [ee=" + ee + "=]";
+            System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.get() [result=" + result + "=]");
+
             throw new NoSuchWordException(word);
+        }
+
+        System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.get() [result=" + result + "=]");
+
         return String.join(",", synonyms);
     }
 
     @POST
     public String post(String synonyms) throws WordAlreadyExistsException {
         List<String> synonymList = new ArrayList<>(Arrays.asList(synonyms.split(",")));
-        if (null != map.putIfAbsent(word, synonymList))
+
+        String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms  + "=, synonymList=" + synonymList + "=]";
+
+        if (null != map.putIfAbsent(word, synonymList)) {
+            Exception ee = new WordAlreadyExistsException(word);
+            result += " [ee=" + ee + "=]";
+            System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.post(synonyms=" + synonyms + "=) [result=" + result + "=]");
+
             throw new WordAlreadyExistsException(word);
+        }
+
+        System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.post(synonyms=" + synonyms + "=) [result=" + result + "=]");
+
         return String.join(",", synonyms);
     }
 
     @PUT
     public String put(String synonyms) throws NoSuchWordException {
         List<String> synonymList = Arrays.asList(synonyms.split(","));
-        if (null == map.replace(word, synonymList))
+
+        String result = "[map=" + map + "=, word=" + word  + "=, synonyms=" + synonyms  + "=, synonymList=" + synonymList + "=]";
+
+        if (null == map.replace(word, synonymList)) {
+            Exception ee = new NoSuchWordException(word);
+            result += " [ee=" + ee + "=]";
+            System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.put(synonyms=" + synonyms + "=) [result=" + result + "=]");
+
             throw new NoSuchWordException(word);
+        }
+
+        System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.put(synonyms=" + synonyms + "=) [result=" + result + "=]");
+
         return String.join(",", synonyms);
     }
 
     @DELETE
     public boolean delete() throws NoSuchWordException {
-        if (null == map.remove(word))
+        String result = "[map=" + map + "=, word=" + word  + "=]";
+
+        if (null == map.remove(word)) {
+            Exception ee = new NoSuchWordException(word);
+            result += " [ee=" + ee + "=]";
+            System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.delete() [result=" + result + "=]");
+
             throw new NoSuchWordException(word);
+        }
+        result += " [result=true]";
+        System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.delete() [result=" + result + "=]");
+
         return true;
     }
 
     @PATCH
     public String patch(String newSynonyms) throws NoSuchWordException {
         List<String> synonyms = map.get(word);
-        if (synonyms == null)
+
+        String result = "[map=" + map + "=, word=" + word  + "=, newSynonyms=" + newSynonyms  + "=, synonyms=" + synonyms + "=]";
+
+        if (synonyms == null) {
+            Exception ee = new NoSuchWordException(word);
+            result += " [ee=" + ee + "=]";
+            System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.patch(newSynonyms=" + newSynonyms + "=) [result=" + result + "=]");
+
             throw new NoSuchWordException(word);
+        }
         synonyms.addAll(Arrays.asList(newSynonyms.split(",")));
+
+        result = "[map=" + map + "=, word=" + word  + "=, newSynonyms=" + newSynonyms  + "=, synonyms=" + synonyms + "=]";
+        System.out.println("com.packt.microprofile.book.ch4.thesaurus.ThesaurusResource.patch(newSynonyms=" + newSynonyms + "=) [result=" + result + "=]");
+
         return String.join(",", synonyms);
     }
 }
